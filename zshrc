@@ -30,4 +30,4 @@ promptinit
 prompt clint
 prompt bart
 
-PATH=$PATH:/home/eve/etc/local/scala.d/scala-2.11.8/bin
+
