@@ -5,6 +5,9 @@ function my-accept-line() {
 	echo 
 	if [ "$IS_LONG" = "LONG" ]; then
 	    ls -l
+	    IS_LONG=CLEAR
+	elif [ "$IS_LONG" = "CLEAR" ]; then
+	    clear
 	    IS_LONG=SHORT
 	else
 	    ls 
@@ -22,7 +25,7 @@ zle -N my-accept-line
 bindkey '^M' my-accept-line
 
 if [[ ! "PATH" = "*$HOME/etc/local*" ]]; then
-    find -L ~/etc/local -type d -name bin
+    find -L ~/etc/local -type d -name bin | (read aa; PATH+=:$aa);
 fi
 
 autoload promptinit
