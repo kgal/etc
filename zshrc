@@ -13,7 +13,7 @@ function my-accept-line() {
 	    ls 
 	    IS_LONG=LONG
 	fi
-	echo -n "% "
+	echo -n "$(pwd)% "
     else
 	# in any case run the `accept-line' widget
 	zle accept-line
