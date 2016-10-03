@@ -24,7 +24,12 @@ zle -N my-accept-line
 # rebind Enter, usually this is `^M'
 bindkey '^M' my-accept-line
 
+
+# If this hasn't been already run...
 if [[ ! "PATH" = "*$HOME/etc/local*" ]]; then
+    # For all linked (and regular) directories under ~/etc/local
+    # run through them and find every file named 'bin' and add
+    # that to the PATH
     find -L ~/etc/local -type d -name bin | (read aa; PATH+=:$aa);
 fi
 
