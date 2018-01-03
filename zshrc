@@ -30,12 +30,14 @@ if [[ ! "PATH" = "*$HOME/etc/local*" ]]; then
     # For all linked (and regular) directories under ~/etc/local
     # run through them and find every file named 'bin' and add
     # that to the PATH
-    find -L ~/etc/local -type d -name bin | (read aa; PATH+=:$aa);
+	PATH+=$(find -L ~/etc/local -type d -name bin -printf ":%p")
 fi
 
 autoload promptinit
 promptinit
 prompt clint
 prompt bart
+
+export DYNINSTAPI_RT_LIB=/usr/lib64/dyninst/libdyninstAPI_RT.so
 
 
